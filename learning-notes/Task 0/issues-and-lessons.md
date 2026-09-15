@@ -50,6 +50,14 @@
 - Key 只放在 `.env`（已 gitignore）。  
 - 文档与提交材料中不要粘贴完整 Key。  
 
+## 10. UI 发了消息但 Smith 网页看不到 Trace
+
+- **现象**：在 `http://127.0.0.1:5174/?thread=...` 发了 `hi` / `你好`，Smith 项目里仍只有旧 Trace。  
+- **原因**：`agentseek-api` 进程在改 `.env`（新 Key / `LANGSMITH_TRACING=true`）**之前**就已启动；服务端不会热加载环境变量。  
+- **证据**：API `StartTime` 早于 `.env` 的 `LastWriteTime`；重启后同脚本 `invoke('hi')` 立刻多出一条 Trace。  
+- **处理**：改完 `research_deepagent\.env` 后必须 **重启** `agentseek-api`（关掉 `agentseek dev` 再起，或结束进程再 `start_research.bat`）。  
+- **教训**：Env 变更 → 重启后端 → 再在 UI 触发；排查时对比进程启动时间与文件修改时间。  
+
 ---
 
 ## 会话收尾模板（已写入全局记忆）

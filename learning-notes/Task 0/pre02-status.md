@@ -9,16 +9,14 @@
 | LangSmith CLI | 完成 | `langsmith 0.2.55`，已加入用户 PATH |
 | skills 安全扫描 | 完成 | Socket 0 alerts；langsmith-trace Snyk Med Risk（可接受） |
 | 密钥泄露审计 | 完成 | 见 [secret-audit.md](./secret-audit.md)，**未泄露真实 Key** |
-| Trace 实操尝试 | 部分 | SDK/CLI 可用；当前 API Key 返回 **403 Forbidden**，追踪未写入 |
+| Trace 实操尝试 | **完成** | 新 Key `lsv2_pt_...` 验证通过；见 [pre02-trace-analysis.md](./pre02-trace-analysis.md) |
+| Trace 实操（pre02 §5） | **完成** | Trace `01a0a684-...`：最慢 LLM 10.95s / 最慢 tool 10.69s |
 
 ## 待完成 / 可选
 
 | 项 | 说明 |
 |----|------|
-| 重新创建 LangSmith Key | 到 [smith.langchain.com/settings/apikeys](https://smith.langchain.com/settings/apikeys) 新建；确认组织权限 |
-| 写入正确 `.env` | 必须写在 `research_deepagent\.env`（研究应用读取处），不是根目录练习用 `.env` |
-| 打开追踪 | `LANGSMITH_TRACING=true` 后 `agentseek dev` 跑一条 research |
-| CLI 分析 | `langsmith project list` → `langsmith trace list --project deepagents-course --name research` |
+| 待完成项 | 已全部关闭（可选：Agents linked、更复杂 research） |
 | Agents linked | `npx skills list` 显示 not linked；MiMo Desktop 读项目 `.agents/skills` 不依赖 link |
 
 ## 排查 403 备忘

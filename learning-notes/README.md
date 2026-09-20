@@ -1,10 +1,10 @@
-# 学习记录（个人）
+﻿# 瀛︿範璁板綍锛堜釜浜猴級
 
-对应 Datawhale《Deep Agents 实战》个人提交材料。
-
-| 目录 | 内容 |
+瀵瑰簲 Datawhale銆奃eep Agents 瀹炴垬銆嬩釜浜烘彁浜ゆ潗鏂欍€?
+| 鐩綍 | 鍐呭 |
 |------|------|
-| [Task 0](./Task%200/) | 环境自检、术语、部署过程、问题说明、本地服务与 LangSmith、Trace 分析 |
-| [Task 2](./Task%202/) | ch01 Harness 三层架构 + **DeepSeek Harness / DeerFlow2 扩展对比**；ch02 快速上手笔记 |
+| [Task 0](./Task%200/) | 鐜鑷銆佹湳璇€侀儴缃茶繃绋嬨€侀棶棰樿鏄庛€佹湰鍦版湇鍔′笌 LangSmith銆乀race 鍒嗘瀽 |
+| [Task 2](./Task%202/) | ch01 Harness 涓夊眰鏋舵瀯 + **DeepSeek Harness / DeerFlow2 鎵╁睍瀵规瘮**锛沜h02 蹇€熶笂鎵嬬瑪璁?|
 
-> 本目录为个人学习记录，与课程正文 `content/` 分开。
+> 鏈洰褰曚负涓汉瀛︿範璁板綍锛屼笌璇剧▼姝ｆ枃 `content/` 鍒嗗紑銆?
+

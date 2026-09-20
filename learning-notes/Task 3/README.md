@@ -7,6 +7,7 @@
 | 工作坊主文档（一步步怎么做） | `D:\agent_study\labs\ch03\WORKSHOP.md` |
 | 实验脚本 step1–6 | `D:\agent_study\labs\ch03\step*.py` |
 | 实验日志模板 | `learning-notes/Task 3/lab-journal.md` |
+| **ch03 实验小结（Step1–6 实测）** | `learning-notes/Task 3/ch03-lab-summary.md` |
 
 ## 本章你将学会
 

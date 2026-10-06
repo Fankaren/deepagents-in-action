@@ -12,7 +12,8 @@
 | 文件 | 说明 |
 |------|------|
 | `lab-journal.md` | 实验日志模板（预测 vs 实际） |
-| `ch04-lab-summary.md` | 跑完后的实测小结（提交主文档，做完再写） |
+| `progress-log.md` | 9 个会话的过程记录（做了什么/学到了什么/经验教训） |
+| `ch04-lab-summary.md` | **实测小结（提交主文档，已完成）** |
 | `labs/ch04/WORKSHOP.md` | 一步步怎么做（主仓库） |
 | `labs/ch04/step1_planning_off.py` | 默认不带 write_todos（对照 ch03 Step1） |
 | `labs/ch04/step2_enable_planning.py` | 打开 TodoListMiddleware，首次看见状态流转 |
@@ -25,3 +26,5 @@
 - deepagents **0.7.14** / langchain **1.4.0** / langgraph 1.2.11
 - `TodoListMiddleware` 来自 `langchain.agents.middleware`（deepagents 包不再自带）
 - `Todo` = `{content: str, status: "pending"|"in_progress"|"completed"}`；状态存 State 的 `todos` 字段；文件存 `files` 字段
+
+（2026-10 收官：Step 1–5 + 3b/3c/4b 全部完成，见 ch04-lab-summary.md）

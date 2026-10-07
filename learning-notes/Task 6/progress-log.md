@@ -99,11 +99,27 @@
 
 ---
 
+## 会话 6 · Step 4 转向与刹车（P1a 差两秒悬而未决）
+
+**做了什么**
+- 跑 step4_steering.py：P1b ✓（task_id 不变，channel 里 run_id 已换新值——Step2 伏笔兑现）；P2 半中（实际状态串是 interrupted 不是 cancelled）；P1a 查早了（update 在 09:21:06 重启任务，15s 等待不够，09:21:24 查时仍 running）——交付 check_task.py 常驻验货工具待补查
+
+**学到了什么**
+- **update 的真实代价 = 整任务重启**：旧 run 作废（睡到一半的 slow_research 作废）、新 run 带 thread 历史从头执行——转向的响应时间 ≈ 完整任务时长；「续」的是 checkpoint 里的对话历史，「重来」的是没跑完的工具
+- **状态词表 +1**：running/success/error/**interrupted**——cancel 落点是 interrupted，课程说「本地标 cancelled」，物证为准
+- 关键词匹配再咬一口：脚本用「运行」子串判断要不要二次确认，被「不会再继续运行」误触发——流程控制也别用关键字代理
+
+**经验教训**
+- 给「转向」这类重启型操作留足等待预算：update 后的完成时间 = update 落地时刻 + 完整任务时长，不是原任务剩余时长
+- 验货工具化：check_task.py 让「差一次查询」变成 10 秒可补的事，不再临时拼命令
+
+---
+
 ## 待办 / 下一步
 
 - [x] 材料搭建 + 服务排障 + 服务上线（:8123，双 graph 注册）
 - [ ] Step 1：五工具盘点（脚本已验证，待用户跑）
 - [x] Step 2：启而不等（5.5s 返回 vs 任务 10s+；task_id==thread_id 实证）
 - [x] Step 3b v3 + 日志取证：真并行铁证（started_at 同微秒 + active=3），错开完成 = 限流所致，悬案裁决
-- [ ] Step 4（选做）：update 中途转向 + cancel
+- [x] Step 4：update=整任务重启（task_id 不变 run_id 换）、cancel 落点 interrupted；P1a 待 check_task.py 补查
 - [ ] 收尾：`ch06-lab-summary.md` + 推送

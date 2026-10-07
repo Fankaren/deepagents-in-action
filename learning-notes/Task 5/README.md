@@ -13,7 +13,7 @@
 |------|------|
 | `lab-journal.md` | 实验日志模板（预测 vs 实际） |
 | `progress-log.md` | 会话过程记录（每会话收尾追加） |
-| `ch05-lab-summary.md` | 实测小结（提交主文档，做完再写） |
+| `ch05-lab-summary.md` | **实测小结（提交主文档，已完成）** |
 | `labs/ch05/step1_task_inventory.py` | task 工具与默认 general-purpose 盘点（零模型调用） |
 | `labs/ch05/step2_first_delegation.py` | 首次委派：中间过程不可见 + 共享文件系统 |
 | `labs/ch05/step3_isolation_ledger.py` | 隔离的账本：自己干 vs 委派（主上下文账 vs 全局账） |
@@ -26,3 +26,5 @@
 - 默认 general-purpose 子 agent：能力继承主 agent，上下文独立（工具描述原文 "stateless by default: sees only the prompt"）
 - 自定义子 agent：`{name, description, system_prompt}` 三要素；tools 显式指定**完全替换**；middleware 不继承；`mode="fork"` 为实验特性
 - ch04 的 TodoListMiddleware 不被字典声明的子 agent 继承（需自带）
+
+（2026-10 收官：Step 1–5 + 3b 本地子账本全部完成，见 ch05-lab-summary.md）

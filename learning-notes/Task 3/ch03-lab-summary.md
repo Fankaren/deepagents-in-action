@@ -113,3 +113,7 @@ A：权限是运行时强制；prompt 是模型自觉，可被绕过。
 - 日志模板：`Task 3/lab-journal.md`  
 - 工具加载与选择：`Task 2/tool-loading-and-selection.md`  
 - 课程原文：ch03 虚拟文件系统  
+
+---
+
+> **勘误（2026-10-07，ch07 实验发现）**：ch03 原文与本文旧笔记中的「自定义策略记得同时保护 write/edit/delete」在 deepagents 0.7.14 上是**不准确的**——`FilesystemOperation = Literal["read", "write"]` 只有两类，且 `_DEFAULT_FS_TOOL_OPS` 把 `edit_file` 与 `delete` 都映射到 `write`。**保护 `write` 即覆盖 write_file / edit_file / delete**。另注意：类别值写错（如 `"edit"`）不会报错，权限会静默失效（fail-open），配置需对照源码合法值。

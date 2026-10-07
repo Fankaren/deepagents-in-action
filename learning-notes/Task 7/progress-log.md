@@ -81,6 +81,25 @@
 - 写权限配置时应以「操作清单对照表」逐项核对（write/edit/delete），不凭记忆写两三行完事
 - 埋陷阱（delete 未锁）与疏忽（同一条配置）这次是同一个东西——好在它变成了实验素材
 
+
+
+---
+
+## 会话 5 · delete 实测反转（裁定权在映射表）
+
+**做了什么**
+- 用户改一处实测 delete：`Error: permission denied for write on /skills/report-writer/SKILL.md (matches deny rule(s): /skills/**)` ——**delete 被拦**，用户押「会拦」✓，我押「后门」✗
+- 查源码定案：`FilesystemOperation = Literal["read", "write"]`（只有两类）+ `_DEFAULT_FS_TOOL_OPS` 里 `delete: "write"`——**delete 属 write 类别**，保护 write 即覆盖 write_file/edit_file/delete
+
+**学到了什么**
+- **权限粒度 = 路径 × 操作类别，操作类别 ≠ 工具名**：映射表才是一手事实，凭工具名直觉会错（我错在这）
+- **fail-open 隐患**：配置里的 `"edit"` 不是合法类别却静默接受——`Literal` 是类型提示不做运行时校验，类别写错权限静默失效，不报错
+- **ch03 旧笔记勘误**：「自定义策略记得同时保护 write/edit/delete」按 0.7.14 是错的（write 类已覆盖三者）；已在 ch03-lab-summary 追加勘误
+
+**经验教训**
+- 用权限/枚举类配置前先查源码里的合法值与映射表，一页 grep 抵一小时猜测
+- 猜错的预测照样有价值：这次我的错误概念（工具级开关）与用户的正确直觉（路径锁=全锁）正好构成教学对照
+
 ---
 
 ## 待办 / 下一步

@@ -115,11 +115,25 @@
 
 ---
 
+## 会话 7 · P1a 结案（check_task 补查，update 机制物证闭环）
+
+**做了什么**
+- check_task.py 补查：新 run success、报告精确以「修订版：」开头 → P1a ✓；runs 列表同时显示旧 run status=interrupted——update 的「打断旧 run、同 thread 起新 run」从推断变物证
+
+**学到了什么**
+- runs 列表 = run 的族谱：同一 thread 上新旧两代 run 并列（旧 interrupted / 新 success），update 与 cancel 共用同一 interrupt 策略（旧 run 落点状态一致）
+- 验货工具补一次查询结案 10 秒钟——「差一次查询」不该成为悬案
+
+**经验教训**
+- 本轮三预测 P1a/P1b 全中、P2 半中——异步五工具至此全部有物证；转向/刹车的代价模型（重启/异步生效）已进日志
+
+---
+
 ## 待办 / 下一步
 
 - [x] 材料搭建 + 服务排障 + 服务上线（:8123，双 graph 注册）
 - [ ] Step 1：五工具盘点（脚本已验证，待用户跑）
 - [x] Step 2：启而不等（5.5s 返回 vs 任务 10s+；task_id==thread_id 实证）
 - [x] Step 3b v3 + 日志取证：真并行铁证（started_at 同微秒 + active=3），错开完成 = 限流所致，悬案裁决
-- [x] Step 4：update=整任务重启（task_id 不变 run_id 换）、cancel 落点 interrupted；P1a 待 check_task.py 补查
+- [x] Step 4 全结案：P1a ✓（修订版报告）P1b ✓ P2 半中（interrupted）；runs 族谱物证闭环
 - [ ] 收尾：`ch06-lab-summary.md` + 推送

@@ -111,12 +111,28 @@
 
 ---
 
+## 会话 7 · Step 4（路由与隔离中的约束，两预测全中）
+
+**做了什么**
+- 跑 step4_custom_subagent.py：注册 summarizer（description+system_prompt），不指名道姓委派。P1 路由到 summarizer ✓、P2 摘要 47 字且无前后缀 ✓
+
+**学到了什么**
+- **验货窗口的读法**：task 描述清单里 general-purpose 列了能力说明，自定义子 agent 只有 description 原文——继承来的工具**不会自动列出**，路由信号只有 description，所以关键能力要自己写进去
+- **约束的边界**：50 字规则只套住子 agent 的报告；主 agent 的 FINAL 自己加了客套话——每个 agent 只遵守自己的 system_prompt，边界内容各归各管
+- 子 agent 读 40 行文章的 read_file 第三次全程隐身（隔离结论复现）
+- description 足够具体（「只做摘要，不做其他任何事」）→ 路由一次命中——课程 Troubleshooting 第一条的反面成立
+
+**经验教训**
+- 写 description 的标准：动作导向 + 边界声明（做什么/不做什么）+ 关键工具或约束，因为这是主 agent 做决定的唯一依据
+
+---
+
 ## 待办 / 下一步
 
 - [x] Step 1：盘点（task 默认在、general-purpose 同能力）
 - [x] Step 2：首次委派（过程不可见 + 文件可见）
 - [x] Step 3：隔离的账本（A 16533 vs B 8207 输入 tok；P3 已由 LangSmith 补测结案：全局 B 大）
-- [ ] Step 4：description 路由 + 隔离中的约束
+- [x] Step 4：description 路由 ✓ + 隔离中的约束 ✓（47 字）
 - [x] Step 3b v2：本地子账本重跑成功（双仪器交叉验证，并行委派之谜解开）
 - [ ] Step 5（选做）：协调者模式（ch04 × ch05）
 - [ ] 收尾：`ch05-lab-summary.md` + 推送

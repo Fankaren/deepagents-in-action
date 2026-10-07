@@ -12,7 +12,7 @@
 |------|------|
 | `lab-journal.md` | 实验日志模板 |
 | `progress-log.md` | 会话过程记录（每会话收尾追加） |
-| `ch06-lab-summary.md` | 实测小结（提交主文档，做完再写） |
+| `ch06-lab-summary.md` | **实测小结（提交主文档，已完成）** |
 | `labs/ch06/langgraph.json` | 服务配置（supervisor + researcher 两 graph，env 指向根 .env） |
 | `labs/ch06/graphs/supervisor.py` | 主 Agent（AsyncSubAgentMiddleware 五工具 + 铁律 system_prompt） |
 | `labs/ch06/graphs/researcher.py` | 调研员（slow_research 睡 8 秒模拟长任务） |
@@ -27,3 +27,5 @@
 - deepagents **0.7.14**（AsyncSubAgent/AsyncSubAgentMiddleware）/ langgraph 1.2.11 / langgraph-cli[inmem] **0.4.32**（本次新装）/ langgraph-sdk 0.4.4
 - 服务：`langgraph dev --port 8123 --n-jobs-per-worker 4`；graph_id：`supervisor`、`researcher`；ASGI 进程内传输（url 不填）
 - 任务元数据在 `async_tasks` state channel（独立于消息历史——与 ch04 todos 同一设计哲学）
+
+（2026-10 收官：Step 1–4 + 3b 两轮 + 日志取证全部完成，见 ch06-lab-summary.md）

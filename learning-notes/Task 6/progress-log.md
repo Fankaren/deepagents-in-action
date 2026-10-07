@@ -27,11 +27,29 @@
 
 ---
 
+## 会话 2 · Step 2 启而不等（P1 押错即题眼）
+
+**做了什么**
+- 用户跑 step2_first_async.py：P1 押「等任务做完」→ 实际 5.5s 返回（错——同步直觉带入）；P2 押区间（running或success）→ 实际 running（半对：预测要写死一个）；P3 ✓ success+报告
+
+**学到了什么**
+- **启而不等**：start_async_task 在子任务刚开始跑时就返回 task_id——启动与执行被拆开，task_id 是「欠条」不是「收货单」
+- **task_id == thread_id**（channel 数据实证）；run_id 是另一个字段（指向具体某次执行）——Step 4 的伏笔：update 后 run_id 变、task_id 不变
+- async_tasks channel 字段完备：agent_name/run_id/status/created_at/last_checked_at/last_updated_at，独立于消息历史
+- **查完成任务比查运行中任务贵**：check 发现 success 后要多读子 thread 的 state 取报告（第 3 轮 19.9s vs 前两轮 4-5s）——异步模式新长出的成本项
+- 状态机 running→success 有了时间戳证据（08:38:33 → 08:38:58）
+
+**经验教训**
+- 押区间（「running或success」）等于没押——预测的价值在写死后被证伪的可能
+- 跨章迁移直觉要过一遍「机制变没变」检查：同步的等待习惯到异步就是 bug
+
+---
+
 ## 待办 / 下一步
 
 - [x] 材料搭建 + 服务排障 + 服务上线（:8123，双 graph 注册）
 - [ ] Step 1：五工具盘点（脚本已验证，待用户跑）
-- [ ] Step 2：启而不等（快速返回 task_id → running → success）
+- [x] Step 2：启而不等（5.5s 返回 vs 任务 10s+；task_id==thread_id 实证）
 - [ ] Step 3：真并行（三任务 + 完成时刻扎堆/错开判据）
 - [ ] Step 4（选做）：update 中途转向 + cancel
 - [ ] 收尾：`ch06-lab-summary.md` + 推送

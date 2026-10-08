@@ -1,32 +1,66 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="他律笔记 头像 · 榜书大字">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="他律笔记 头像 · 榜书大字（飞白墨韵）">
   <defs>
     <radialGradient id="paper" cx="0.5" cy="0.46" r="0.8">
       <stop offset="0" stop-color="#F8F3E8"/>
-      <stop offset="1" stop-color="#E8E0CF"/>
+      <stop offset="1" stop-color="#E7DEC9"/>
     </radialGradient>
-    <filter id="grain" x="0" y="0" width="100%" height="100%">
+    <linearGradient id="ink" x1="0.1" y1="0" x2="0.5" y2="1">
+      <stop offset="0" stop-color="#26221B"/>
+      <stop offset="1" stop-color="#0C0A07"/>
+    </linearGradient>
+    <filter id="paperGrain" x="0" y="0" width="100%" height="100%">
       <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
       <feColorMatrix type="saturate" values="0"/>
       <feComponentTransfer><feFuncA type="linear" slope="0.05"/></feComponentTransfer>
     </filter>
+    <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+    <!-- 毛笔飞白/墨韵：湍流位移让笔画边缘粗糙、带墨韵 -->
+    <filter id="brush" x="-25%" y="-25%" width="150%" height="150%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.032" numOctaves="3" seed="7" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="11" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <!-- 做旧（印章毛边） -->
+    <filter id="aged" x="-25%" y="-25%" width="150%" height="150%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <pattern id="streaks" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(30)">
+      <line x1="0" y1="0" x2="0" y2="9" stroke="#F8F3E8" stroke-width="3.2" opacity="0.55"/>
+    </pattern>
+    <mask id="charMask">
+      <text x="256" y="252" text-anchor="middle" dominant-baseline="central"
+            font-family="'STKaiti','KaiTi','Kaiti SC','STXingkai','LiSu','Noto Serif SC','Source Han Serif SC','Songti SC',serif"
+            font-size="376" font-weight="800" fill="#ffffff">律</text>
+    </mask>
   </defs>
 
-  <!-- 米纸底 -->
   <rect width="512" height="512" fill="url(#paper)"/>
-  <rect width="512" height="512" filter="url(#grain)" opacity="0.6"/>
+  <rect width="512" height="512" filter="url(#paperGrain)" opacity="0.6"/>
 
-  <!-- 榜书大字：律（尽量撑满、留白四角） -->
-  <text x="256" y="250" text-anchor="middle" dominant-baseline="central"
-        font-family="'Noto Serif SC','Source Han Serif SC','Songti SC','SimSun',serif"
-        font-size="332" font-weight="700" fill="#1E1B16">律</text>
+  <!-- 榜书大字（背后淡墨晕染） -->
+  <text x="256" y="252" text-anchor="middle" dominant-baseline="central"
+        font-family="'STKaiti','KaiTi','Kaiti SC','STXingkai','LiSu','Noto Serif SC','Source Han Serif SC','Songti SC',serif"
+        font-size="392" font-weight="800" fill="#141210" opacity="0.12" filter="url(#blur)">律</text>
 
-  <!-- 朱文方印（真印章：红底白字「他律」竖排） -->
-  <rect x="300" y="298" width="126" height="126" rx="12" fill="#9E3B2E"/>
-  <rect x="311" y="309" width="104" height="104" rx="7" fill="none" stroke="#F6F0E4" stroke-width="4" opacity="0.92"/>
-  <text x="363" y="344" text-anchor="middle" dominant-baseline="central"
-        font-family="'Noto Serif SC','Source Han Serif SC','Songti SC',serif"
-        font-size="50" font-weight="700" fill="#F6F0E4">他</text>
-  <text x="363" y="396" text-anchor="middle" dominant-baseline="central"
-        font-family="'Noto Serif SC','Source Han Serif SC','Songti SC',serif"
-        font-size="50" font-weight="700" fill="#F6F0E4">律</text>
+  <!-- 主字：墨色渐变 + 飞白笔意 -->
+  <text x="256" y="252" text-anchor="middle" dominant-baseline="central"
+        font-family="'STKaiti','KaiTi','Kaiti SC','STXingkai','LiSu','Noto Serif SC','Source Han Serif SC','Songti SC',serif"
+        font-size="376" font-weight="800" fill="url(#ink)" filter="url(#brush)">律</text>
+
+  <!-- 飞白：把纸色细纹叠在笔画内 -->
+  <g mask="url(#charMask)"><rect width="512" height="512" fill="url(#streaks)" opacity="0.22"/></g>
+
+  <!-- 做旧朱文小印（缩小、字不出框） -->
+  <g filter="url(#aged)">
+    <rect x="322" y="326" width="92" height="92" rx="9" fill="#8E3A2A"/>
+    <rect x="330" y="334" width="76" height="76" rx="5" fill="none" stroke="#F2E9D8" stroke-width="3.2" opacity="0.9"/>
+    <text x="368" y="356" text-anchor="middle" dominant-baseline="central"
+          font-family="'STKaiti','KaiTi','STZhongsong','Noto Serif SC','Source Han Serif SC',serif"
+          font-size="33" font-weight="700" fill="#F2E9D8">他</text>
+    <text x="368" y="392" text-anchor="middle" dominant-baseline="central"
+          font-family="'STKaiti','KaiTi','STZhongsong','Noto Serif SC','Source Han Serif SC',serif"
+          font-size="33" font-weight="700" fill="#F2E9D8">律</text>
+  </g>
 </svg>

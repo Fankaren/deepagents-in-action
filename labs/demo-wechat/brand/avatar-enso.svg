@@ -1,36 +1,59 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="他律笔记 头像 · 禅意圆相">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="他律笔记 头像 · 禅意圆相（飞白墨韵）">
   <defs>
     <radialGradient id="paper2" cx="0.5" cy="0.46" r="0.8">
       <stop offset="0" stop-color="#F8F3E8"/>
-      <stop offset="1" stop-color="#E8E0CF"/>
+      <stop offset="1" stop-color="#E7DEC9"/>
     </radialGradient>
-    <filter id="grain2" x="0" y="0" width="100%" height="100%">
+    <linearGradient id="ink2" x1="0.1" y1="0" x2="0.5" y2="1">
+      <stop offset="0" stop-color="#26221B"/>
+      <stop offset="1" stop-color="#0C0A07"/>
+    </linearGradient>
+    <filter id="paperGrain2" x="0" y="0" width="100%" height="100%">
       <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
       <feColorMatrix type="saturate" values="0"/>
       <feComponentTransfer><feFuncA type="linear" slope="0.05"/></feComponentTransfer>
     </filter>
+    <filter id="brush2" x="-30%" y="-30%" width="160%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" seed="5" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="10" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="aged2" x="-25%" y="-25%" width="150%" height="150%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="9" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="3.2" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <pattern id="streaks2" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(28)">
+      <line x1="0" y1="0" x2="0" y2="9" stroke="#F8F3E8" stroke-width="3.2" opacity="0.5"/>
+    </pattern>
+    <mask id="charMask2">
+      <text x="256" y="248" text-anchor="middle" dominant-baseline="central"
+            font-family="'STKaiti','KaiTi','Kaiti SC','STXingkai','LiSu','Noto Serif SC','Source Han Serif SC','Songti SC',serif"
+            font-size="246" font-weight="800" fill="#ffffff">律</text>
+    </mask>
   </defs>
 
   <rect width="512" height="512" fill="url(#paper2)"/>
-  <rect width="512" height="512" filter="url(#grain2)" opacity="0.6"/>
+  <rect width="512" height="512" filter="url(#paperGrain2)" opacity="0.6"/>
 
-  <!-- 圆相（不闭合，笔意） -->
-  <circle cx="256" cy="248" r="172" fill="none" stroke="#26231E" stroke-width="13"
-          stroke-linecap="round" stroke-dasharray="1002 78"
-          transform="rotate(120 256 248)" opacity="0.85"/>
+  <!-- 圆相（不闭合，带笔意） -->
+  <circle cx="256" cy="248" r="176" fill="none" stroke="#26231E" stroke-width="14"
+          stroke-linecap="round" stroke-dasharray="1010 80"
+          transform="rotate(120 256 248)" opacity="0.85" filter="url(#brush2)"/>
 
-  <!-- 律 -->
-  <text x="256" y="246" text-anchor="middle" dominant-baseline="central"
-        font-family="'Noto Serif SC','Source Han Serif SC','Songti SC','SimSun',serif"
-        font-size="216" font-weight="700" fill="#22201C">律</text>
+  <!-- 律：墨色飞白 -->
+  <text x="256" y="248" text-anchor="middle" dominant-baseline="central"
+        font-family="'STKaiti','KaiTi','Kaiti SC','STXingkai','LiSu','Noto Serif SC','Source Han Serif SC','Songti SC',serif"
+        font-size="246" font-weight="800" fill="url(#ink2)" filter="url(#brush2)">律</text>
+  <g mask="url(#charMask2)"><rect width="512" height="512" fill="url(#streaks2)" opacity="0.2"/></g>
 
-  <!-- 真印章 -->
-  <rect x="312" y="312" width="108" height="108" rx="10" fill="#9E3B2E" opacity="0.96"/>
-  <rect x="321" y="321" width="90" height="90" rx="6" fill="none" stroke="#F6F0E4" stroke-width="3.5" opacity="0.9"/>
-  <text x="366" y="352" text-anchor="middle" dominant-baseline="central"
-        font-family="'Noto Serif SC','Source Han Serif SC','Songti SC',serif"
-        font-size="42" font-weight="700" fill="#F6F0E4">他</text>
-  <text x="366" y="398" text-anchor="middle" dominant-baseline="central"
-        font-family="'Noto Serif SC','Source Han Serif SC','Songti SC',serif"
-        font-size="42" font-weight="700" fill="#F6F0E4">律</text>
+  <!-- 做旧小印（字不出框） -->
+  <g filter="url(#aged2)">
+    <rect x="324" y="326" width="86" height="86" rx="8" fill="#8E3A2A"/>
+    <rect x="331" y="333" width="72" height="72" rx="5" fill="none" stroke="#F2E9D8" stroke-width="3" opacity="0.9"/>
+    <text x="367" y="354" text-anchor="middle" dominant-baseline="central"
+          font-family="'STKaiti','KaiTi','STZhongsong','Noto Serif SC','Source Han Serif SC',serif"
+          font-size="31" font-weight="700" fill="#F2E9D8">他</text>
+    <text x="367" y="388" text-anchor="middle" dominant-baseline="central"
+          font-family="'STKaiti','KaiTi','STZhongsong','Noto Serif SC','Source Han Serif SC',serif"
+          font-size="31" font-weight="700" fill="#F2E9D8">律</text>
+  </g>
 </svg>

@@ -12,5 +12,6 @@
 | [Task 6](./Task%206/) | ch06 异步子 Agent（AsyncSubAgent）|
 | [Task 7](./Task%207/) | ch07 Skills（渐进披露 / 描述路由 / 权限类别）|
 | [Task 8](./Task%208/) | ch08 长期记忆（StoreBackend / 作用域 / CompositeBackend 路由）|
+| [Task 9](./Task%209/) | ch09 Human-in-the-Loop（interrupt_on / 四种决策 / 条件与权限中断）|
 
 > 本目录为个人学习记录，与课程正文 `content/` 分开。

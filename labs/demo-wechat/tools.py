@@ -13,6 +13,7 @@ from urllib.parse import quote_plus
 from langchain_core.tools import tool
 
 from _common import ToolLedger, today
+from make_cover import generate as _generate_cover
 
 
 def _ddgs_search(query: str, max_results: int) -> str:
@@ -53,10 +54,20 @@ def build_tools(ledger: ToolLedger) -> dict:
         ledger.record("publish_article", {"title": title, "draft_path": draft_path, "cover_image": cover_image})
         return f"PUBLISH-READY :: {title} :: {draft_path} :: {today()}"
 
+    @tool
+    def make_cover(title: str, series: str, subtitle: str = "") -> str:
+        """为终稿生成公众号首图（900×383）并返回图片路径。成稿后调用一次。"""
+        try:
+            res = _generate_cover(title, series, subtitle)
+            return "COVER-READY :: " + str(res.get("png") or res.get("svg"))
+        except Exception as exc:  # noqa: BLE001
+            return f"封面生成失败：{exc}"
+
     return {
         "web_search": web_search,
         "search_free_images": search_free_images,
         "publish_article": publish_article,
+        "make_cover": make_cover,
     }
 
 

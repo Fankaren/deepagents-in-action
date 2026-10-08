@@ -13,6 +13,9 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
+
+from make_cover import generate as generate_cover
 
 from _common import (
     EditorContext,
@@ -105,7 +108,8 @@ def main() -> None:
         "请为我整理一篇今日可发布的男性向微信公众号推文：先读 content-strategy（锁定方向/系列）与 performance（阅读量台账），"
         "从 content-plan 推进当前系列选题（可委派 trend-researcher），读 knowledge-base 复用已有沉淀，"
         "严格按 /skills/wechat-article/SKILL.md 成稿（1800-2600 字、6-9 分钟阅读），委派 image-scout 配图，"
-        "把终稿写入 /drafts/，并把新沉淀写入 knowledge-base，最后调用 publish_article 提交审批。"
+        "把终稿写入 /drafts/，调用 make_cover 生成公众号首图，并把新沉淀写入 knowledge-base，"
+        "最后调用 publish_article 提交审批。"
     )
     result = invoke(agent, instruction, config=config, context=context)
 
@@ -132,6 +136,21 @@ def main() -> None:
         append_ledger(store, args.editor_id, f"- {today()} | {title} | {path}")
         print(f"\n已发布就绪（账本）：{ledger.dump()}")
         print("终稿已提交审批通过，请到工作区自取后【自行发布】。")
+
+        # 兜底：确保当日封面存在（主编若已调 make_cover 则跳过）
+        try:
+            name = os.path.basename(path)
+            stem = name[:-3] if name.endswith(".md") else name
+            m = re.match(r"^\d{4}-\d{2}-\d{2}-(.+?)(?:-|$)", stem)
+            series = m.group(1) if m else "专栏"
+            cover_path = os.path.join("workspace", "drafts", stem + "-cover.png")
+            if os.path.isfile(cover_path):
+                print(f"封面：{cover_path}（主编已生成）")
+            else:
+                res = generate_cover(title, series, "", cover_path)
+                print(f"封面（兜底生成）：{res.get('png') or res.get('svg')}")
+        except Exception as exc:  # noqa: BLE001
+            print(f"封面生成异常：{exc}")
     else:
         print("\n未执行发布（可能被 reject 或未批准）。")
 

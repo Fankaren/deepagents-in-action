@@ -85,6 +85,14 @@ python memory_cli.py record --series 底层逻辑 --title "..." --reads 3200 --l
 
 **两条规则**：① 方向一经确认**不轻易更换**，只在本方向的 4 系列里做体系化长文（1800-2600 字 / 6-9 分钟）；② 规划前**必读 performance**，按阅读量调选题权重与写法（方向不变）。
 
+## 封面与每日自动化
+
+- **自动出封面**：主编成稿后会调用 `make_cover` 生成公众号首图（900×383）；`run_daily.py` 有**兜底**——若主编未生成，则按通过审批的标题/系列自动补一张。
+- **每日定时**：`daily_run.bat`（激活 venv → `run_daily.py --auto-approve`），**日志按天**写 `workspace/logs/yyyy-MM-dd.log`：
+  ```powershell
+  schtasks /Create /TN "他律手记-每日推文" /SC DAILY /ST 08:30 /TR "\"<仓库>\labs\demo-wechat\daily_run.bat\""
+  ```
+
 ## 文件
 
 | 文件 | 说明 |

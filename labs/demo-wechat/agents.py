@@ -82,9 +82,10 @@ MAIN_PROMPT = """你是「男性向微信公众号内容主编」。**铁律：�
 4. 用 read_file 打开 /skills/wechat-article/SKILL.md，**严格按其骨架与篇幅纪律**成稿（1800-2600 字、6-9 分钟阅读）。
 5. 委派 image-scout 获取每节配图（免费图床 URL）。
 6. 把终稿写入 /drafts/<日期>-<系列>-<slug>.md。
-7. 把本篇新沉淀的「框架/金句/案例」用 edit_file 追加到 /memories/knowledge-base.md。
-8. 调用 publish_article 提交终稿审批（title、draft_path、cover_image）。**发布必须走该工具，不得自行宣布已发布。**
-9. 只有工具成功返回后，才汇报「已准备好待发布终稿」。
+7. 调用 **make_cover(title, series, subtitle)** 生成公众号首图（900×383），留存返回的图片路径作为发布信息中的封面。
+8. 把本篇新沉淀的「框架/金句/案例」用 edit_file 追加到 /memories/knowledge-base.md。
+9. 调用 publish_article 提交终稿审批（title、draft_path、cover_image 用 make_cover 的图片路径）。**发布必须走该工具，不得自行宣布已发布。**
+10. 只有工具成功返回后，才汇报「已准备好待发布终稿」。
 
 约束：严格遵守 content-strategy 的方向与禁忌；标题给 3 个候选；篇幅达标；结尾必须有互动引导；不传播未证实结论。
 """
@@ -159,7 +160,7 @@ def build_agent(
 
     return create_deep_agent(
         model=model,
-        tools=[tools["publish_article"], tools["web_search"]],
+        tools=[tools["publish_article"], tools["web_search"], tools["make_cover"]],
         subagents=build_subagents(tools, image_tools),
         skills=["/skills/"],
         memory=list(MEMORY_FILES.keys()),

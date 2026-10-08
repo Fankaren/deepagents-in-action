@@ -38,13 +38,13 @@ python make_cover.py --series 底层逻辑 --title "Q4第一天，你的时间�
 
 ## 四、每日自动化（定时跑）
 
-`../daily_run.bat`：激活 venv → `run_daily.py --auto-approve` → 日志写入 `workspace/logs/daily.log`。
+`../daily_run.bat`：激活 venv → `run_daily.py --auto-approve`（**会连封面一起生成**）→ 日志**按天**写 `workspace/logs/yyyy-MM-dd.log`。
 
 用 Windows 任务计划每天 08:30 跑：
 ```powershell
 schtasks /Create /TN "他律手记-每日推文" /SC DAILY /ST 08:30 /TR "\"D:\...\labs\demo-wechat\daily_run.bat\""
 ```
-> 产物为「待审终稿」；你在微信后台**自行发布**。发布后用 `memory_cli.py record` 回填阅读量。
+> 产物为「待审终稿 + 首图」；你在微信后台**自行发布**。发布后用 `memory_cli.py record` 回填阅读量。
 
 ## 五、查重与合规
 - 公众号名唯一；个人主体一年可改 2 次。

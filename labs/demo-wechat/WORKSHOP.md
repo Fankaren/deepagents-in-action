@@ -42,6 +42,7 @@ python run_daily.py                 # 交互审批
 - [ ] 出现 `task` 委派给 `trend-researcher`、`image-scout`
 - [ ] 有 `read_file(/skills/wechat-article/SKILL.md)`
 - [ ] 草稿写入 `workspace/drafts/`（磁盘上能 `Get-Content` 看到）
+- [ ] 调用 `make_cover` 生成首图（`*-cover.png` 落到 drafts；未调用则 run_daily 兜底生成）
 - [ ] 触发 `publish_article` 审批；auto-approve 后账本新增一笔
 - [ ] 终稿符合技能骨架（3 标题候选/导语/3 小节/结尾引导/配图位）
 

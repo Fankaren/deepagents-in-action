@@ -85,6 +85,22 @@
 
 ---
 
+## 会话 4 · 自动出封面 + 日志按天
+
+**做了什么**
+- 给主编加 **`make_cover` 工具**（模板填充 + 长标题自动断行 + 无头 Chrome 渲染）；`run_daily.py` 加**兜底**——审批通过后若主编没生成，则按标题/系列自动补一张 `<draft>-cover.png`
+- `daily_run.bat` 日志改为**按天**：`workspace/logs/yyyy-MM-dd.log`
+- `SKILL/MAIN_PROMPT/README/WORKSHOP/brand-notes` 同步（封面步骤、日志说明）
+
+**学到什么**
+- **工具 + 兜底双层保证**：模型可能漏调工具 → 应用侧兜底更可靠（同 ch08 外部写入思路）
+- 封面生成要处理**长标题断行**与**Chrome 字体依赖**；`make_cover.generate` 抽成可复用函数，工具与脚本共用
+
+**遇到什么问题**
+- 无（`make_cover.generate` 与工具调用均本地验证通过；`step0` 仍 21/21）
+
+---
+
 ## 逐 Step 记录（三段式）
 
 ### Step 0 · 仪器单测

@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="他律笔记 头像 · 禅意圆相（米纸留白）">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="他律笔记 头像 · 榜书大字">
   <defs>
-    <radialGradient id="paper" cx="0.5" cy="0.46" r="0.78">
-      <stop offset="0" stop-color="#F7F2E7"/>
-      <stop offset="1" stop-color="#E7DFCE"/>
+    <radialGradient id="paper" cx="0.5" cy="0.46" r="0.8">
+      <stop offset="0" stop-color="#F8F3E8"/>
+      <stop offset="1" stop-color="#E8E0CF"/>
     </radialGradient>
     <filter id="grain" x="0" y="0" width="100%" height="100%">
       <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
@@ -15,17 +15,18 @@
   <rect width="512" height="512" fill="url(#paper)"/>
   <rect width="512" height="512" filter="url(#grain)" opacity="0.6"/>
 
-  <!-- 禅圆（圆相，不闭合，带留白） -->
-  <circle cx="256" cy="250" r="170" fill="none" stroke="#26231E" stroke-width="9"
-          stroke-linecap="round" stroke-dasharray="992 76"
-          transform="rotate(122 256 250)" opacity="0.8"/>
-
-  <!-- 律（宋体大字，留白居中） -->
-  <text x="256" y="248" text-anchor="middle" dominant-baseline="central"
+  <!-- 榜书大字：律（尽量撑满、留白四角） -->
+  <text x="256" y="250" text-anchor="middle" dominant-baseline="central"
         font-family="'Noto Serif SC','Source Han Serif SC','Songti SC','SimSun',serif"
-        font-size="206" font-weight="600" fill="#22201C">律</text>
+        font-size="332" font-weight="700" fill="#1E1B16">律</text>
 
-  <!-- 朱红小印（一枚，禅意节奏点） -->
-  <rect x="318" y="316" width="54" height="54" rx="9" fill="#9E3B2E" opacity="0.94"/>
-  <rect x="326" y="324" width="38" height="38" rx="5" fill="none" stroke="#F4EEE2" stroke-width="3" opacity="0.9"/>
+  <!-- 朱文方印（真印章：红底白字「他律」竖排） -->
+  <rect x="300" y="298" width="126" height="126" rx="12" fill="#9E3B2E"/>
+  <rect x="311" y="309" width="104" height="104" rx="7" fill="none" stroke="#F6F0E4" stroke-width="4" opacity="0.92"/>
+  <text x="363" y="344" text-anchor="middle" dominant-baseline="central"
+        font-family="'Noto Serif SC','Source Han Serif SC','Songti SC',serif"
+        font-size="50" font-weight="700" fill="#F6F0E4">他</text>
+  <text x="363" y="396" text-anchor="middle" dominant-baseline="central"
+        font-family="'Noto Serif SC','Source Han Serif SC','Songti SC',serif"
+        font-size="50" font-weight="700" fill="#F6F0E4">律</text>
 </svg>

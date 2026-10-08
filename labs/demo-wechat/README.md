@@ -30,6 +30,17 @@
 
 流程：读记忆 → 子Agent 选题 → read SKILL 按模板成稿 → 子Agent 配图 → 写草稿到 `workspace/drafts/` → `publish_article` **触发审批** → 通过后写入选题台账（你自行发布）。
 
+## 实测证据（Evidence）
+
+`evidence/` 是本 Demo **一次真实运行的测试数据备份**（2026-10-08，商汤日日新 `glm-5.2`），用于佐证端到端可用：
+
+- `evidence/drafts/`：主编按 SKILL 生成的体系化长文（含免费图床配图 URL）
+- `evidence/memory/`：锁定方向、系列规划、知识沉淀、阅读量台账、去重台账（5 个记忆文件）
+- `evidence/store.snapshot.json`：**持久化 Store 快照**（跨天记忆的落地格式）
+- 复现路径见 `evidence/README.md`（`step0_selftest.py` 21/21 → `set-direction` → `run_daily.py` → `record` → 再跑）
+
+> live 运行态（`workspace/.state/`、`workspace/drafts/`）已 gitignore；正式产物以 `evidence/` 快照为准。
+
 ## 环境
 
 ```powershell

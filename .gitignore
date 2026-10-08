@@ -15,3 +15,16 @@ node_modules/
 
 # local planning docs (superpowers)
 docs/superpowers/
+
+# python / local
+__pycache__/
+*.py[cod]
+.venv/
+.env
+*.env
+!.env.example
+*.tmp
+
+# demo-wechat live run state (evidence/ is committed instead)
+labs/demo-wechat/workspace/.state/
+labs/demo-wechat/workspace/drafts/

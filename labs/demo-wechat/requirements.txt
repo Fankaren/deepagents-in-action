@@ -1,0 +1,12 @@
+deepagents>=0.6.8
+langchain>=1.3.3
+langchain-openai
+python-dotenv
+
+# 可选：免费热度搜索（web_search）。二者其一即可。
+ddgs
+duckduckgo-search
+
+# 可选：图床 MCP（ch12 预览）。装了才可用 --mcp。
+mcp
+langchain-mcp-adapters

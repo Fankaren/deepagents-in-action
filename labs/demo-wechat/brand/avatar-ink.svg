@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="他律笔记 头像 · 禅意圆相（深墨淡金）">
+  <defs>
+    <radialGradient id="inkbg" cx="0.5" cy="0.44" r="0.8">
+      <stop offset="0" stop-color="#191D25"/>
+      <stop offset="1" stop-color="#0E1116"/>
+    </radialGradient>
+    <filter id="grain2" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.05"/></feComponentTransfer>
+    </filter>
+  </defs>
+
+  <rect width="512" height="512" fill="url(#inkbg)"/>
+  <rect width="512" height="512" filter="url(#grain2)" opacity="0.5"/>
+
+  <!-- 圆相（淡金细笔，不闭合） -->
+  <circle cx="256" cy="250" r="170" fill="none" stroke="#C6A15B" stroke-width="7"
+          stroke-linecap="round" stroke-dasharray="984 84"
+          transform="rotate(118 256 250)" opacity="0.9"/>
+
+  <!-- 律（暖白宋体大字） -->
+  <text x="256" y="248" text-anchor="middle" dominant-baseline="central"
+        font-family="'Noto Serif SC','Source Han Serif SC','Songti SC','SimSun',serif"
+        font-size="206" font-weight="600" fill="#ECE4D3">律</text>
+
+  <!-- 朱红小印 -->
+  <rect x="318" y="316" width="54" height="54" rx="9" fill="#A6402F" opacity="0.95"/>
+  <rect x="326" y="324" width="38" height="38" rx="5" fill="none" stroke="#ECE4D3" stroke-width="3" opacity="0.85"/>
+</svg>

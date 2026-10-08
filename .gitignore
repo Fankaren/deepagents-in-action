@@ -28,3 +28,5 @@ __pycache__/
 # demo-wechat live run state (evidence/ is committed instead)
 labs/demo-wechat/workspace/.state/
 labs/demo-wechat/workspace/drafts/
+labs/demo-wechat/workspace/logs/
+labs/demo-wechat/workspace/.chrome/

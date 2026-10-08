@@ -95,8 +95,10 @@ python memory_cli.py record --series 底层逻辑 --title "..." --reads 3200 --l
 | `agents.py` | 组装：主 Agent + 两个子 Agent + 记忆/技能/HITL/MCP |
 | `run_daily.py` | 每日一篇工作流（含交互审批）|
 | `memory_cli.py` | 记忆管理（show / set-direction / add-plan / record 阅读量）|
+| `make_cover.py` | 生成公众号首图（填充标题并渲染 PNG）|
+| `daily_run.bat` | 每日定时跑（配合 Windows 任务计划）|
 | `mcp/image_server.py` | 免费图床 MCP 服务（ch12 预览）|
-| `brand/` | 品牌方案：公众号名「他律」+ 简介 + 两版头像 SVG |
+| `brand/` | 品牌「他律手记」：头像（定稿 enso）、封面模板、命名与合规说明 |
 | `step0_selftest.py` | 零模型仪器单测 |
 
 ## 观测点（沿用前几章）

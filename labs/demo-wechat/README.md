@@ -96,6 +96,7 @@ python memory_cli.py record --series 底层逻辑 --title "..." --reads 3200 --l
 | `run_daily.py` | 每日一篇工作流（含交互审批）|
 | `memory_cli.py` | 记忆管理（show / set-direction / add-plan / record 阅读量）|
 | `mcp/image_server.py` | 免费图床 MCP 服务（ch12 预览）|
+| `brand/` | 品牌方案：公众号名「他律」+ 简介 + 两版头像 SVG |
 | `step0_selftest.py` | 零模型仪器单测 |
 
 ## 观测点（沿用前几章）

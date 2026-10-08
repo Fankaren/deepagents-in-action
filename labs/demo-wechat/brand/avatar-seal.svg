@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="他律 头像（印章版）">
+  <defs>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFD27A"/>
+      <stop offset="0.55" stop-color="#FFB13B"/>
+      <stop offset="1" stop-color="#FF7A00"/>
+    </linearGradient>
+    <radialGradient id="bg2" cx="0.5" cy="0.42" r="0.72">
+      <stop offset="0" stop-color="#1C2A44"/>
+      <stop offset="1" stop-color="#0C1220"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="512" height="512" fill="url(#bg2)"/>
+
+  <!-- 印章外框 + 内细线（契约 / 规则感） -->
+  <rect x="82" y="82" width="348" height="348" rx="66" fill="none" stroke="url(#g2)" stroke-width="16"/>
+  <rect x="108" y="108" width="296" height="296" rx="46" fill="none" stroke="#2A3A57" stroke-width="6"/>
+
+  <text x="256" y="258" text-anchor="middle" dominant-baseline="central"
+        font-family="'Noto Serif SC','Source Han Serif SC','Microsoft YaHei',serif"
+        font-size="150" font-weight="800" fill="#F5F7FA" letter-spacing="12">他律</text>
+</svg>
